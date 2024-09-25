@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/JaazibTariq/static/css/main.9da5a950.css",
+    "main.js": "/JaazibTariq/static/js/main.bdb23fea.js",
+    "static/js/453.9c226ca7.chunk.js": "/JaazibTariq/static/js/453.9c226ca7.chunk.js",
+    "index.html": "/JaazibTariq/index.html",
+    "main.9da5a950.css.map": "/JaazibTariq/static/css/main.9da5a950.css.map",
+    "main.bdb23fea.js.map": "/JaazibTariq/static/js/main.bdb23fea.js.map",
+    "453.9c226ca7.chunk.js.map": "/JaazibTariq/static/js/453.9c226ca7.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9da5a950.css",
+    "static/js/main.bdb23fea.js"
+  ]
+}
