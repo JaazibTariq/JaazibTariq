@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import profilePic from './pfp.jpg';  // Add this line
 
 const AboutWrapper = styled.div`
   max-width: 1000px;
@@ -66,19 +67,18 @@ const About = () => {
         <Title>About Me</Title>
         <Content>
           Hi! I am Jaazib, a passionate Computer Engineering student at the University of Waterloo, 
-          with a keen interest in software development and emerging technologies. 
+          with a keen interest in software development and emerging technologies. Currently, I am a Front End Engineer at SellStatic.
           My academic journey has equipped me with a strong foundation in both hardware 
           and software aspects of computer systems. I'm always eager to learn new 
           technologies and apply my skills to solve real-world problems.
         </Content>
         <Content>
-          When I'm not coding, you can find me exploring new hiking trails, experimenting 
-          with new recipes in the kitchen, or engaging in hackathons to challenge my skills.
+          Thank you so much for taking the time to check out my portifolio, feel free to reach out! And be sure to check out my resume.
         </Content>
         
       </ContentSection>
       <ImageSection>
-        <HeadshotImage src="/api/placeholder/300/300" alt="Jaazib Tariq" />
+        <HeadshotImage src={profilePic} alt="Jaazib Tariq" />
       </ImageSection>
     </AboutWrapper>
   );

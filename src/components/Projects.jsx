@@ -1,53 +1,105 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const ProjectsWrapper = styled.div`
-  max-width: 800px;
-  margin: 0 auto;
+// Styled components
+const ProjectsContainer = styled.div`
+  width: 100%;
 `;
 
-const Title = styled.h2`
+const ProjectsTitle = styled.h2`
+  color: #ccd6f6;
   font-size: 2rem;
-  margin-bottom: 20px;
+  margin-bottom: 2rem;
+  text-align: center;
 `;
 
-const ProjectItem = styled.div`
-  margin-bottom: 30px;
+const Card = styled.div`
+  background-color: rgba(10, 25, 47, 0.85);
+  border-radius: 8px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
 `;
 
-const ProjectTitle = styled.h3`
-  font-size: 1.3rem;
-  margin-bottom: 10px;
+const Title = styled.h3`
+  color: #64ffda;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
 `;
 
-const ProjectDescription = styled.p`
-  margin-bottom: 10px;
+const Duration = styled.p`
+  color: #8892b0;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+`;
+
+const Description = styled.ul`
+  color: #ccd6f6;
+  padding-left: 1.5rem;
 `;
 
 const TechStack = styled.p`
-  font-style: italic;
+  color: #64ffda;
+  font-size: 0.9rem;
+  margin-top: 1rem;
 `;
 
-const Projects = () => {
+// ProjectCard component
+const ProjectCard = ({ title, duration, description, techStack }) => {
   return (
-    <ProjectsWrapper>
-      <Title>Projects</Title>
-      <ProjectItem>
-        <ProjectTitle>Personal Portfolio Website</ProjectTitle>
-        <ProjectDescription>
-          Designed and developed a responsive personal portfolio website to showcase my projects and skills.
-        </ProjectDescription>
-        <TechStack>Tech stack: React, Styled Components, CSS</TechStack>
-      </ProjectItem>
-      <ProjectItem>
-        <ProjectTitle>Machine Learning Image Classifier</ProjectTitle>
-        <ProjectDescription>
-          Built a convolutional neural network to classify images of handwritten digits with 98% accuracy.
-        </ProjectDescription>
-        <TechStack>Tech stack: Python, TensorFlow, Keras</TechStack>
-      </ProjectItem>
-      {/* Add more project items as needed */}
-    </ProjectsWrapper>
+    <Card>
+      <Title>{title}</Title>
+      <Duration>{duration}</Duration>
+      <Description>
+        {description.map((item, index) => (
+          <li key={index}>{item}</li>
+        ))}
+      </Description>
+      <TechStack>Tech Stack: {techStack}</TechStack>
+    </Card>
+  );
+};
+
+// Projects component
+const Projects = () => {
+  const projects = [
+    {
+      title: "Calendar and Notification App",
+      duration: "June 2023 – December 2023",
+      description: [
+        "Collaborated with a team to develop a mobile application for a local community to stay up-to-date with events",
+        "Utilized React Native for the front-end of the app, ensuring proper UI/UX design",
+        "Worked closely with backend-developers to ensure smooth and efficient design",
+        "Utilized Git for version control and collaboration"
+      ],
+      techStack: "Javascript, Typescript, React Native, React"
+    },
+    {
+      title: "Google x TKS Fall Challenge",
+      duration: "Dec 2023",
+      description: [
+        "Worked alongside Google to find a way to make their business model more effective",
+        "In a group, proposed two solutions with prototypes",
+        "Google Ads+: An upgraded version of Google Ads which provided users with feedback on how to improve the quality score of their advertisements and provided users with a landing page created by Gemini AI",
+        "Google Lite: A mobile app that provides quick-fast 'snippet'-like search results that keeps users immersed in content"
+      ],
+      techStack: "Figma, Canva, Gemini AI"
+    }
+    // Add more projects here if needed
+  ];
+
+  return (
+    <ProjectsContainer>
+      <ProjectsTitle>Projects</ProjectsTitle>
+      {projects.map((project, index) => (
+        <ProjectCard key={index} {...project} />
+      ))}
+    </ProjectsContainer>
   );
 };
 

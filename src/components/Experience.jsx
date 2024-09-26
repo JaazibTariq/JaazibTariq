@@ -2,9 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 
 const ExperienceWrapper = styled.div`
-  max-width: 1200px;
+  max-width: 800px;
+  width: 100%;
   margin: 0 auto;
-  padding: 0 20px;
 `;
 
 const Title = styled.h2`
@@ -13,14 +13,17 @@ const Title = styled.h2`
   color: #ffffff;
 `;
 
-const ExperienceItem = styled.div`
-  margin-bottom: 40px;
-  padding: 20px;
+const ExperienceItemWrapper = styled.div`
+  background-color: rgba(255, 255, 255, 0.1);
   border-radius: 10px;
-  transition: background-color 0.3s ease;
+  padding: 20px;
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+  cursor: pointer;
 
   &:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-5px);
   }
 `;
 
@@ -66,49 +69,66 @@ const SkillItem = styled.li`
   font-size: 0.9rem;
 `;
 
+const ExperienceItem = ({ job, company, dateRange, description, skills, companyUrl }) => {
+  const handleClick = () => {
+    window.open(companyUrl, '_blank', 'noopener,noreferrer');
+  };
+
+  return (
+    <ExperienceItemWrapper onClick={handleClick}>
+      <JobTitle>{job}</JobTitle>
+      <Company>{company}</Company>
+      <DateRange>{dateRange}</DateRange>
+      <Description>
+        {description.map((item, index) => (
+          <li key={index}>{item}</li>
+        ))}
+      </Description>
+      <SkillsList>
+        {skills.map((skill, index) => (
+          <SkillItem key={index}>{skill}</SkillItem>
+        ))}
+      </SkillsList>
+    </ExperienceItemWrapper>
+  );
+};
+
 const Experience = () => {
+  const experiences = [
+    {
+      job: "Front End Engineer",
+      company: "SellStatic",
+      dateRange: "June 2024 – Present",
+      description: [
+        "Designed and developed a front-end web application using React, TypeScript, JavaScript, and HTML/CSS, ensuring responsive web design.",
+        "Collaborated with UI/UX developers and back-end teams to implement new features and integrate ideas.",
+        "Utilized Git for version control and team collaboration.",
+        "Led a complete UI/UX overhaul, resulting in a 300% increase in customer satisfaction."
+      ],
+      skills: ["React", "TypeScript", "JavaScript", "HTML/CSS", "Git", "UI/UX Design"],
+      companyUrl: "https://www.sellstatic.com"
+    },
+    {
+      job: "Software Developer",
+      company: "MAX - Muslims Achieving Excellence",
+      dateRange: "August 2024 - Present",
+      description: [
+        "Developed a secure frontend for a professional networking web app using React + Vite and Chakra UI.",
+        "Optimized application performance by refactoring large pages into modular, reusable components.",
+        "Assisted in frontend revamp using React, TypeScript, and Material UI, addressing code organization and UI consistency issues.",
+        "Leveraged AWS Lambda and Node.js to enhance backend functionality and improve scalability."
+      ],
+      skills: ["React", "Vite", "Chakra UI", "TypeScript", "Material UI", "AWS Lambda", "Node.js"],
+      companyUrl: "https://onemax.org"
+    }
+  ];
+
   return (
     <ExperienceWrapper>
       <Title>Experience</Title>
-      <ExperienceItem>
-        <JobTitle>Front End Engineer</JobTitle>
-        <Company>SellStatic</Company>
-        <DateRange>June 2024 – Present</DateRange>
-        <Description>
-          <li>Designed and developed a front-end web application using React, TypeScript, JavaScript, and HTML/CSS, ensuring responsive web design.</li>
-          <li>Collaborated with UI/UX developers and back-end teams to implement new features and integrate ideas.</li>
-          <li>Utilized Git for version control and team collaboration.</li>
-          <li>Led a complete UI/UX overhaul, resulting in a 300% increase in customer satisfaction.</li>
-        </Description>
-        <SkillsList>
-          <SkillItem>React</SkillItem>
-          <SkillItem>TypeScript</SkillItem>
-          <SkillItem>JavaScript</SkillItem>
-          <SkillItem>HTML/CSS</SkillItem>
-          <SkillItem>Git</SkillItem>
-          <SkillItem>UI/UX Design</SkillItem>
-        </SkillsList>
-      </ExperienceItem>
-      <ExperienceItem>
-        <JobTitle>Software Developer</JobTitle>
-        <Company>MAX - Muslims Achieving Excellence</Company>
-        <DateRange>August 2024 - Present</DateRange>
-        <Description>
-          <li>Developed a secure frontend for a professional networking web app using React + Vite and Chakra UI.</li>
-          <li>Optimized application performance by refactoring large pages into modular, reusable components.</li>
-          <li>Assisted in frontend revamp using React, TypeScript, and Material UI, addressing code organization and UI consistency issues.</li>
-          <li>Leveraged AWS Lambda and Node.js to enhance backend functionality and improve scalability.</li>
-        </Description>
-        <SkillsList>
-          <SkillItem>React</SkillItem>
-          <SkillItem>Vite</SkillItem>
-          <SkillItem>Chakra UI</SkillItem>
-          <SkillItem>TypeScript</SkillItem>
-          <SkillItem>Material UI</SkillItem>
-          <SkillItem>AWS Lambda</SkillItem>
-          <SkillItem>Node.js</SkillItem>
-        </SkillsList>
-      </ExperienceItem>
+      {experiences.map((exp, index) => (
+        <ExperienceItem key={index} {...exp} />
+      ))}
     </ExperienceWrapper>
   );
 };
