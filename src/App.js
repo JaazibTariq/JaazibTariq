@@ -62,7 +62,7 @@ function App() {
       <MainContainer>
         <Section id="home">
           <Header>Jaazib Tariq</Header>
-          <SubHeader>Computer Engineering Student at University of Waterloo</SubHeader>
+          <SubHeader>Computer Engineering Student at The University of Waterloo</SubHeader>
           <LinksWrapper>
             <LinkIcon href="https://github.com/JaazibTariq" target="_blank">
               <FaGithub />
