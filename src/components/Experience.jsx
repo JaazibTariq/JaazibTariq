@@ -100,10 +100,10 @@ const Experience = () => {
       company: "SellStatic",
       dateRange: "June 2024 – Present",
       description: [
-        "Designed and developed a front-end web application using React, TypeScript, JavaScript, and HTML/CSS, ensuring responsive web design.",
-        "Collaborated with UI/UX developers and back-end teams to implement new features and integrate ideas.",
-        "Utilized Git for version control and team collaboration.",
-        "Led a complete UI/UX overhaul, resulting in a 300% increase in customer satisfaction."
+        "Improved marketing and advertising processes using artificial intelligence, optimizing workflows for efficiency and increasing user adoption.",
+        "Reduced Advertisement creation time by 30% by implementing features using React and TypeScript that allows users to modify their marketing campaign colors before creation.",
+        "Boosted customer satisfaction by 230% by implementing a complete front end overhaul that introduced a modern UI as well as various help features for users using React and TypeScript.",
+        "Coordinated front-end development tasks using Git, ensuring seamless collaboration and maintaining code integrity throughout development."
       ],
       skills: ["React", "TypeScript", "JavaScript", "HTML/CSS", "Git", "UI/UX Design"],
       companyUrl: "https://www.sellstatic.com"
@@ -113,10 +113,12 @@ const Experience = () => {
       company: "MAX - Muslims Achieving Excellence",
       dateRange: "August 2024 - Present",
       description: [
-        "Developed a secure frontend for a professional networking web app using React + Vite and Chakra UI.",
-        "Optimized application performance by refactoring large pages into modular, reusable components.",
-        "Assisted in frontend revamp using React, TypeScript, and Material UI, addressing code organization and UI consistency issues.",
-        "Leveraged AWS Lambda and Node.js to enhance backend functionality and improve scalability."
+        "Built a professional networking web app for Muslim professionals using React, Vite, and Chakra UI, ensuring a responsive and user-friendly interface.",
+        "Refactored large pages into modular, reusable components, improving development efficiency, maintainability, and overall application performance.",
+        "Revamped the MAX Aspire frontend using React, TypeScript, and Material UI, resolving issues such as disorganized code, conflicting CSS, and inconsistent UI designs.",
+        "Improved asset loading speed and resolved functionality gaps by integrating the frontend with the backend API, enhancing user experience and performance.",
+        "Implemented Redux across pages to fix the issue of state transfer by storing all state in a single location.",
+        "Leveraged AWS Lambda and Node.js for server less backend processing, improving scalability and performance of key application features."
       ],
       skills: ["React", "Vite", "Chakra UI", "TypeScript", "Material UI", "AWS Lambda", "Node.js"],
       companyUrl: "https://onemax.org"
