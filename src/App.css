@@ -20,3 +20,17 @@ body, html {
   height: 100%;
   z-index: -1;
 }
+.blinking-cursor {
+  display: inline-block;
+  width: 4px; /* Thickness of the cursor */
+  height: 1em; /* Matches the height of the text */
+  background-color: white; /* Cursor color */
+  margin-left: 2px; /* Space between text and cursor */
+  animation: blink 0.7s step-end infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}

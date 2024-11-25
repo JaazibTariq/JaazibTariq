@@ -8,7 +8,7 @@ import About from './components/About';
 import Experience from './components/Experience';
 import Projects from './components/Projects';
 import ContactInfo from './components/ContactInfo';
-
+import Typewriter from './typewriter';
 const MainContainer = styled.div`
   color: white;
   min-height: 100vh;
@@ -16,6 +16,7 @@ const MainContainer = styled.div`
   scroll-snap-type: y proximity;
   scroll-behavior: smooth;
 `;
+
 
 const Section = styled.section`
   min-height: 100vh;
@@ -137,8 +138,12 @@ function App() {
       <MainContainer>
         <HomeSection id="home">
           <ContentWrapper>
-            <Header>Jaazib Tariq</Header>
-            <SubHeader>Software Developer & Computer Engineering Student at The University of Waterloo</SubHeader>
+            <Header>
+              <Typewriter text="Hi, I am Jaazib Tariq" />
+            </Header>
+            <SubHeader>
+              <Typewriter text="Software Developer & Computer Engineering Student at The University of Waterloo" />
+            </SubHeader>
             <LinksWrapper>
               <LinkIcon href="https://github.com/JaazibTariq" target="_blank" rel="noopener noreferrer">
                 <FaGithub />
