@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import Resume from '../Jaazib_Tariq_resume.pdf'
+import Resume from '../Jaazib_Tariq_Resume.pdf'
 
 const Nav = styled.nav`
   background-color: rgba(10, 25, 47, 0.85);
