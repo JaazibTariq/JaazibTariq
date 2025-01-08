@@ -40,6 +40,28 @@ const Section = styled.section`
     background: linear-gradient(to right, transparent, rgba(255,255,255,0.3), transparent);
   }
 `;
+const Section2 = styled.section`
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+ 
+  scroll-snap-align: start;
+  box-sizing: border-box;
+  position: relative;
+
+  &:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(255,255,255,0.3), transparent);
+  }
+`;
 
 const ContentWrapper = styled.div`
   max-width: 1200px;
@@ -172,7 +194,9 @@ function App() {
             <ProjectsWrapper id="projects">
               <Projects />
             </ProjectsWrapper>
-            <ContactInfo />
+            <div id="contact">
+              <ContactInfo />
+            </div>
           </ContentWrapper>
         </CombinedSection>
       </MainContainer>
