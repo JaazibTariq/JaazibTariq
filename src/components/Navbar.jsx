@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import Resume from '../Jaazib_Tariq_Resume.pdf'
 
 const Nav = styled.nav`
   background-color: rgba(10, 25, 47, 0.85);
@@ -147,9 +146,11 @@ const Navbar = ({ activeSection }) => {
             <NavLink onClick={() => scrollToSection('projects')}>Projects</NavLink>
           </NavItem>
           <NavItem>
-            <ResumeButton href={Resume} target="_blank" rel="noopener noreferrer">
-              Resume
+          <NavLink onClick={() => scrollToSection('contact')}>
+            <ResumeButton href={null} target="_blank" rel="noopener noreferrer">
+              Contact Me
             </ResumeButton>
+          </NavLink>
           </NavItem>
         </NavLinks>
       </NavContainer>
