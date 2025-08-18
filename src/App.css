@@ -24,7 +24,7 @@ body, html {
   display: inline-block;
   width: 4px; /* Thickness of the cursor */
   height: 1em; /* Matches the height of the text */
-  background-color: white; /* Cursor color */
+  background-color: #e9d5ff; /* Cursor color */
   margin-left: 2px; /* Space between text and cursor */
   animation: blink 0.7s step-end infinite;
 }

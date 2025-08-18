@@ -1,14 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './App.css';
-import CursorBackground from './CursorBackground';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import styled from 'styled-components';
-import Navbar from './components/Navbar';
-import About from './components/About';
 import Experience from './components/Experience';
 import Projects from './components/Projects';
 import ContactInfo from './components/ContactInfo';
 import Typewriter from './typewriter';
+import profilePic from './components/pfp.jpg';
 const MainContainer = styled.div`
   color: white;
   min-height: 100vh;
@@ -64,24 +62,29 @@ const Section2 = styled.section`
 `;
 
 const ContentWrapper = styled.div`
-  max-width: 1200px;
+  max-width: 900px;
   width: 100%;
   margin: 0 auto;
+  padding: 0 24px;
 `;
 
 const HomeSection = styled(Section)`
-  justify-content: center;
-  text-align: center;
+  min-height: auto;
+  justify-content: flex-start;
+  text-align: left;
+  padding-top: 40px;
+  padding-bottom: 0;
 `;
 
 const Header = styled.h1`
-  font-size: 4rem;
-  font-weight: 800;
+  font-family: 'Permanent Marker', cursive;
+  font-size: clamp(2.2rem, 6vw, 3.1rem);
+  font-weight: 400;
   margin: 0 0 20px;
   letter-spacing: 2px;
   
   @media (max-width: 768px) {
-    font-size: 3rem;
+    font-size: 2.4rem;
   }
 `;
 
@@ -89,7 +92,7 @@ const SubHeader = styled.h2`
   font-size: 1.8rem;
   font-weight: 400;
   margin-bottom: 30px;
-  color: #3498db;
+  color: #c084fc;
   
   @media (max-width: 768px) {
     font-size: 1.5rem;
@@ -100,7 +103,7 @@ const LinksWrapper = styled.div`
   display: flex;
   gap: 30px;
   justify-content: center;
-  margin-top: 30px;
+  margin-top: 70px;
 `;
 
 const LinkIcon = styled.a`
@@ -109,7 +112,7 @@ const LinkIcon = styled.a`
   transition: color 0.3s ease, transform 0.3s ease;
 
   &:hover {
-    color: #3498db;
+    color: #c084fc;
     transform: translateY(-5px);
   }
 `;
@@ -131,72 +134,120 @@ const ProjectsWrapper = styled.div`
   margin-bottom: 60px;
 `;
 
+// Intro layout (merged Home + About)
+const IntroGrid = styled.div`
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: center;
+  gap: 32px;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+`;
+
+const IntroLeft = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+
+  @media (max-width: 900px) {
+    align-items: center;
+  }
+`;
+const InlineIcon = styled(LinkIcon)`
+  font-size: 2.5rem;
+  line-height: 1;
+`;
+
+const TitleRow = styled.div`
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  flex-wrap: wrap;
+  min-width: 0;
+
+  @media (max-width: 560px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+`;
+
+const Blurb = styled.p`
+  max-width: 640px;
+  margin: 0;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #dbe3ee;
+`;
+
+const IntroRight = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
+const CombinedText = styled.p`
+  margin-top: 10px;
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #dbe3ee;
+`;
+
+const ExperienceSection = styled(Section)`
+  min-height: auto;
+  padding-top: 10px;
+  padding-bottom: 40px;
+`;
+
+// Removed SocialRow; social icons are now inline next to the title
+
 function App() {
-  const [activeSection, setActiveSection] = useState('home');
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const sections = document.querySelectorAll('section');
-      const scrollPosition = window.pageYOffset;
-
-      sections.forEach((section) => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-
-        if (scrollPosition >= sectionTop - sectionHeight / 3) {
-          setActiveSection(section.id);
-        }
-      });
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   return (
     <>
-      <Navbar activeSection={activeSection} />
-      <CursorBackground />
       <MainContainer>
         <HomeSection id="home">
           <ContentWrapper>
-            <Header>
-              <Typewriter text="Hi, I am Jaazib Tariq" />
-            </Header>
-            <SubHeader>
-              <Typewriter text="Software Developer & Computer Engineering Student at The University of Waterloo" />
-            </SubHeader>
-            <LinksWrapper>
-              <LinkIcon href="https://github.com/JaazibTariq" target="_blank" rel="noopener noreferrer">
-                <FaGithub />
-              </LinkIcon>
-              <LinkIcon href="https://linkedin.com/in/JaazibTariq" target="_blank" rel="noopener noreferrer">
-                <FaLinkedin />
-              </LinkIcon>
-            </LinksWrapper>
+            <div id="about">
+              <IntroGrid>
+                <IntroLeft>
+                  <TitleRow>
+                    <Header>
+                      <Typewriter text="Hi, I'm Jaazib" />
+                    </Header>
+                    <InlineIcon href="https://github.com/JaazibTariq" target="_blank" rel="noopener noreferrer">
+                      <FaGithub />
+                    </InlineIcon>
+                    <InlineIcon href="https://linkedin.com/in/Jaazib" target="_blank" rel="noopener noreferrer">
+                      <FaLinkedin />
+                    </InlineIcon>
+                  </TitleRow>
+                </IntroLeft>
+              </IntroGrid>
+              <CombinedText>
+                I'm a Computer Engineering student at the University of Waterloo who loves building, learning, and creating. Feel free to reach out if you want to work together, or just chat!
+              </CombinedText>
+            </div>
           </ContentWrapper>
         </HomeSection>
         
-        <Section id="about">
-          <ContentWrapper>
-            <About />
-          </ContentWrapper>
-        </Section>
-        
-        <Section id="experience">
+        <ExperienceSection id="experience">
           <ContentWrapper>
             <Experience />
           </ContentWrapper>
-        </Section>
+        </ExperienceSection>
+
+        
         
         <CombinedSection>
           <ContentWrapper>
             <ProjectsWrapper id="projects">
               <Projects />
             </ProjectsWrapper>
-            <div id="contact">
-              <ContactInfo />
-            </div>
+           
           </ContentWrapper>
         </CombinedSection>
       </MainContainer>
