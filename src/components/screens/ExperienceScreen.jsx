@@ -12,11 +12,6 @@ const staticMove = keyframes`
   100% { background-position: 100% 100%; }
 `;
 
-const blink = keyframes`
-  0%, 90% { opacity: 1; }
-  95% { opacity: 0.5; }
-  100% { opacity: 1; }
-`;
 
 const scanline = keyframes`
   0% { transform: translateY(-100%); }

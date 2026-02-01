@@ -17,11 +17,6 @@ const scanline = keyframes`
   100% { transform: translateY(100%); }
 `;
 
-const typing = keyframes`
-  from { width: 0; }
-  to { width: 100%; }
-`;
-
 const blink = keyframes`
   0%, 50% { border-color: #E63946; }
   51%, 100% { border-color: transparent; }

@@ -254,19 +254,6 @@ const LinkLabel = styled.span`
   letter-spacing: 1px;
 `;
 
-const EmailLink = styled(ContactLink)`
-  grid-column: 1 / -1;
-  flex-direction: row;
-  gap: 15px;
-  padding: clamp(15px, 2vh, 20px);
-`;
-
-const EmailText = styled.span`
-  font-family: 'Times New Roman', serif;
-  font-size: clamp(0.8rem, 1.1vw, 1rem);
-  color: #0166FF;
-`;
-
 const StatusBar = styled.div`
   display: flex;
   justify-content: center;
