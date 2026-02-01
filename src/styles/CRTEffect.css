@@ -1,0 +1,578 @@
+/* CRT Monitor - Chunky 90s 3D Style */
+
+/* Main container - fills entire screen */
+.crt-monitor {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(180deg, #1a1a1a 0%, #0d0d0d 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* The entire monitor body - FIXED dimensions based on viewport */
+.crt-body {
+  width: 100%;
+  height: calc(100vh - 60px); /* Fixed height: viewport minus padding and stand */
+  max-height: calc(100vh - 60px);
+  min-height: calc(100vh - 60px);
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(160deg, #6b6b6b 0%, #4a4a4a 15%, #3d3d3d 50%, #2a2a2a 85%, #1f1f1f 100%);
+  border-radius: 20px 20px 25px 25px;
+  position: relative;
+  flex-shrink: 0;
+  
+  /* 3D depth - outer bevel */
+  box-shadow: 
+    /* Outer highlight (top-left light source) */
+    -4px -4px 0 #7a7a7a,
+    -8px -8px 0 #5a5a5a,
+    /* Outer shadow (bottom-right) */
+    4px 4px 0 #1a1a1a,
+    8px 8px 0 #0a0a0a,
+    /* Soft shadow for depth */
+    12px 12px 30px rgba(0,0,0,0.8),
+    20px 20px 60px rgba(0,0,0,0.5),
+    /* Inner shadow for thickness */
+    inset 0 2px 0 rgba(255,255,255,0.15),
+    inset 0 -2px 0 rgba(0,0,0,0.3);
+}
+
+/* Top bezel - chunky 3D style */
+.crt-top-bezel {
+  height: 45px;
+  background: linear-gradient(180deg, #555 0%, #444 30%, #3a3a3a 70%, #333 100%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 25px;
+  border-radius: 18px 18px 0 0;
+  position: relative;
+  
+  /* 3D bevel effect */
+  box-shadow: 
+    inset 0 3px 0 rgba(255,255,255,0.2),
+    inset 0 -2px 0 rgba(0,0,0,0.3),
+    inset 3px 0 0 rgba(255,255,255,0.1),
+    inset -3px 0 0 rgba(0,0,0,0.2);
+}
+
+.crt-top-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.monitor-led {
+  width: 10px;
+  height: 10px;
+  background: radial-gradient(circle at 30% 30%, #5eff5e, #2ecc40 50%, #1a8a1a);
+  border-radius: 50%;
+  box-shadow: 
+    0 0 8px #2ecc40, 
+    0 0 16px #2ecc40,
+    inset 0 -2px 4px rgba(0,0,0,0.5);
+  animation: led-pulse 2s ease-in-out infinite;
+  border: 1px solid #1a5a1a;
+}
+
+@keyframes led-pulse {
+  0%, 100% { box-shadow: 0 0 8px #2ecc40, 0 0 16px #2ecc40, inset 0 -2px 4px rgba(0,0,0,0.5); }
+  50% { box-shadow: 0 0 4px #2ecc40, 0 0 8px #2ecc40, inset 0 -2px 4px rgba(0,0,0,0.5); }
+}
+
+.monitor-label {
+  font-family: 'Arial', sans-serif;
+  font-size: 11px;
+  font-weight: bold;
+  color: #888;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  text-shadow: 0 1px 0 rgba(0,0,0,0.5), 0 -1px 0 rgba(255,255,255,0.1);
+}
+
+.crt-top-right {
+  display: flex;
+  gap: 8px;
+}
+
+/* 3D Buttons */
+.monitor-button {
+  width: 24px;
+  height: 14px;
+  background: linear-gradient(180deg, #666 0%, #444 50%, #333 100%);
+  border-radius: 3px;
+  border: none;
+  position: relative;
+  
+  /* 3D button bevel */
+  box-shadow: 
+    inset 0 2px 0 rgba(255,255,255,0.3),
+    inset 0 -2px 0 rgba(0,0,0,0.4),
+    inset 2px 0 0 rgba(255,255,255,0.15),
+    inset -2px 0 0 rgba(0,0,0,0.3),
+    0 2px 4px rgba(0,0,0,0.5);
+}
+
+/* Main bezel area - the thick chunky frame */
+.crt-bezel {
+  flex: 1;
+  min-height: 0; /* Important: allows flex child to shrink */
+  display: flex;
+  background: linear-gradient(180deg, #404040 0%, #353535 20%, #2d2d2d 80%, #252525 100%);
+  padding: 25px;
+  position: relative;
+  overflow: hidden;
+  
+  /* Side bevels for 3D depth */
+  box-shadow:
+    inset 5px 0 0 rgba(255,255,255,0.08),
+    inset -5px 0 0 rgba(0,0,0,0.2),
+    inset 0 5px 0 rgba(255,255,255,0.05),
+    inset 0 -5px 0 rgba(0,0,0,0.15);
+}
+
+/* Screen housing - deeply inset */
+.crt-housing {
+  flex: 1;
+  min-height: 0; /* Important: allows flex child to shrink */
+  display: flex;
+  background: #0a0a0a;
+  border-radius: 12px;
+  padding: 12px;
+  position: relative;
+  overflow: hidden;
+  
+  /* Deep inset effect - like the screen is recessed into the monitor */
+  box-shadow: 
+    /* Inner shadows for depth */
+    inset 8px 8px 20px rgba(0,0,0,0.9),
+    inset -4px -4px 15px rgba(0,0,0,0.7),
+    inset 0 0 40px rgba(0,0,0,0.8),
+    /* Outer bevel highlight */
+    -3px -3px 0 #4a4a4a,
+    -1px -1px 0 #3a3a3a,
+    /* Outer bevel shadow */
+    3px 3px 0 #1a1a1a,
+    1px 1px 0 #222;
+}
+
+/* Inner frame around screen */
+.crt-housing::before {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border-radius: 10px;
+  border: 3px solid #1a1a1a;
+  box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+  pointer-events: none;
+}
+
+/* The actual screen - slightly curved appearance */
+.crt-screen {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  background: 
+    radial-gradient(ellipse at center, #12141a 0%, #0a0c10 60%, #050608 100%);
+  border-radius: 8px;
+  overflow: hidden;
+  
+  /* Screen glass effect */
+  box-shadow: 
+    inset 0 0 100px rgba(0,50,100,0.1),
+    inset 0 0 200px rgba(0,0,0,0.3),
+    /* Slight convex screen effect */
+    inset 0 0 50px rgba(100,150,200,0.05);
+}
+
+/* Screen content wrapper */
+.crt-content {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* === CRT OVERLAY EFFECTS === */
+
+/* Scanlines - visible */
+.crt-screen::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0px,
+    transparent 1px,
+    rgba(0, 0, 0, 0.15) 1px,
+    rgba(0, 0, 0, 0.15) 2px
+  );
+  pointer-events: none;
+  z-index: 100;
+}
+
+
+/* RGB pixel grid effect */
+.crt-screen::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 0, 0, 0.01) 0px,
+      rgba(0, 255, 0, 0.01) 1px,
+      rgba(0, 0, 255, 0.01) 2px,
+      transparent 3px
+    );
+  pointer-events: none;
+  z-index: 101;
+}
+
+/* Vignette/curvature shadow - enhanced for curved screen look */
+.crt-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 85% 85% at center,
+    transparent 0%,
+    transparent 50%,
+    rgba(0, 0, 0, 0.15) 75%,
+    rgba(0, 0, 0, 0.4) 95%,
+    rgba(0, 0, 0, 0.5) 100%
+  );
+  pointer-events: none;
+  z-index: 102;
+  border-radius: 8px;
+}
+
+/* Screen reflection/glare - curved glass effect */
+.crt-glare {
+  position: absolute;
+  inset: 0;
+  background: 
+    linear-gradient(
+      120deg,
+      rgba(255, 255, 255, 0.08) 0%,
+      rgba(255, 255, 255, 0.03) 20%,
+      transparent 40%,
+      transparent 100%
+    );
+  pointer-events: none;
+  z-index: 103;
+  border-radius: 8px;
+}
+
+/* Static noise overlay */
+.static-overlay {
+  position: absolute;
+  inset: 0;
+  opacity: 0.05;
+  pointer-events: none;
+  z-index: 99;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  animation: static-flicker 0.1s steps(5) infinite;
+  border-radius: 8px;
+}
+
+@keyframes static-flicker {
+  0% { opacity: 0.05; }
+  25% { opacity: 0.04; }
+  50% { opacity: 0.055; }
+  75% { opacity: 0.035; }
+  100% { opacity: 0.05; }
+}
+
+/* VHS tracking line */
+.vhs-tracking {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 98;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.vhs-tracking::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 40px;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.02) 20%,
+    rgba(255, 255, 255, 0.04) 50%,
+    rgba(255, 255, 255, 0.02) 80%,
+    transparent 100%
+  );
+  animation: tracking-line 8s linear infinite;
+}
+
+@keyframes tracking-line {
+  0% { top: -40px; }
+  100% { top: calc(100% + 40px); }
+}
+
+/* Screen flicker effect */
+.crt-flicker {
+  animation: screen-flicker 0.08s infinite;
+}
+
+@keyframes screen-flicker {
+  0% { opacity: 0.97; }
+  50% { opacity: 1; }
+  100% { opacity: 0.98; }
+}
+
+/* Phosphor glow effect */
+.crt-glow {
+  position: absolute;
+  inset: 0;
+  box-shadow: inset 0 0 80px rgba(100, 180, 255, 0.04);
+  pointer-events: none;
+  z-index: 97;
+  border-radius: 8px;
+}
+
+/* Bottom bezel - chunky with 3D depth */
+.crt-bottom-bezel {
+  height: 60px;
+  background: linear-gradient(180deg, #3a3a3a 0%, #333 30%, #2a2a2a 70%, #222 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0 0 22px 22px;
+  position: relative;
+  
+  /* 3D bevel effect */
+  box-shadow: 
+    inset 0 3px 0 rgba(255,255,255,0.1),
+    inset 0 -3px 0 rgba(0,0,0,0.3),
+    inset 4px 0 0 rgba(255,255,255,0.08),
+    inset -4px 0 0 rgba(0,0,0,0.2);
+}
+
+/* Ventilation grills - 3D inset */
+.crt-bottom-bezel::before {
+  content: '';
+  position: absolute;
+  left: 40px;
+  width: 100px;
+  height: 24px;
+  background: #1a1a1a;
+  border-radius: 4px;
+  box-shadow: 
+    inset 0 2px 4px rgba(0,0,0,0.8),
+    0 1px 0 rgba(255,255,255,0.1);
+}
+
+.crt-bottom-bezel::before {
+  background: 
+    repeating-linear-gradient(
+      90deg,
+      #0a0a0a 0px,
+      #0a0a0a 3px,
+      #2a2a2a 3px,
+      #2a2a2a 6px
+    );
+}
+
+.crt-bottom-bezel::after {
+  content: '';
+  position: absolute;
+  right: 40px;
+  width: 100px;
+  height: 24px;
+  background: 
+    repeating-linear-gradient(
+      90deg,
+      #0a0a0a 0px,
+      #0a0a0a 3px,
+      #2a2a2a 3px,
+      #2a2a2a 6px
+    );
+  border-radius: 4px;
+  box-shadow: 
+    inset 0 2px 4px rgba(0,0,0,0.8),
+    0 1px 0 rgba(255,255,255,0.1);
+}
+
+/* Brand name - embossed look */
+.crt-brand {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 12px;
+  color: #4a4a4a;
+  letter-spacing: 8px;
+  
+  /* Embossed/debossed text effect */
+  text-shadow: 
+    0 1px 0 rgba(255,255,255,0.15),
+    0 -1px 0 rgba(0,0,0,0.5),
+    0 2px 4px rgba(0,0,0,0.3);
+}
+
+
+/* Monitor stand hint at bottom */
+.crt-stand {
+  width: 200px;
+  height: 15px;
+  background: linear-gradient(180deg, #3a3a3a 0%, #2a2a2a 50%, #1a1a1a 100%);
+  margin: 0 auto;
+  border-radius: 0 0 10px 10px;
+  box-shadow: 
+    4px 4px 10px rgba(0,0,0,0.5),
+    inset 0 2px 0 rgba(255,255,255,0.1);
+}
+
+/* Power light (hidden - using monitor-led) */
+.power-light {
+  display: none;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .crt-monitor {
+    padding: 10px;
+  }
+  
+  .crt-body {
+    height: calc(100vh - 40px);
+    max-height: calc(100vh - 40px);
+    min-height: calc(100vh - 40px);
+    border-radius: 15px 15px 18px 18px;
+    box-shadow: 
+      -3px -3px 0 #7a7a7a,
+      -5px -5px 0 #5a5a5a,
+      3px 3px 0 #1a1a1a,
+      5px 5px 0 #0a0a0a,
+      10px 10px 25px rgba(0,0,0,0.7);
+  }
+  
+  .crt-top-bezel {
+    height: 35px;
+    padding: 0 15px;
+    border-radius: 13px 13px 0 0;
+  }
+  
+  .monitor-label {
+    font-size: 9px;
+  }
+  
+  .crt-bezel {
+    padding: 15px;
+  }
+  
+  .crt-housing {
+    padding: 8px;
+    border-radius: 8px;
+  }
+  
+  .crt-bottom-bezel {
+    height: 45px;
+    border-radius: 0 0 16px 16px;
+  }
+  
+  .crt-brand {
+    font-size: 10px;
+    letter-spacing: 5px;
+  }
+  
+  .crt-brand-section {
+    gap: 15px;
+  }
+  
+  .crt-credit {
+    font-size: 6px;
+  }
+  
+  .crt-bottom-bezel::before,
+  .crt-bottom-bezel::after {
+    width: 60px;
+    height: 18px;
+    left: 25px;
+    right: 25px;
+  }
+  
+  .crt-stand {
+    width: 150px;
+    height: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .crt-monitor {
+    padding: 5px;
+  }
+  
+  .crt-body {
+    height: calc(100vh - 25px);
+    max-height: calc(100vh - 25px);
+    min-height: calc(100vh - 25px);
+    border-radius: 12px 12px 15px 15px;
+    box-shadow: 
+      -2px -2px 0 #6a6a6a,
+      -3px -3px 0 #5a5a5a,
+      2px 2px 0 #1a1a1a,
+      3px 3px 0 #0a0a0a,
+      6px 6px 15px rgba(0,0,0,0.6);
+  }
+  
+  .crt-top-bezel {
+    height: 28px;
+    border-radius: 10px 10px 0 0;
+  }
+  
+  .monitor-button {
+    width: 18px;
+    height: 11px;
+  }
+  
+  .monitor-led {
+    width: 8px;
+    height: 8px;
+  }
+  
+  .crt-bezel {
+    padding: 10px;
+  }
+  
+  .crt-housing {
+    padding: 5px;
+    border-radius: 6px;
+  }
+  
+  .crt-screen {
+    border-radius: 4px;
+  }
+  
+  .crt-bottom-bezel {
+    height: 35px;
+    border-radius: 0 0 13px 13px;
+  }
+  
+  .crt-brand {
+    font-size: 8px;
+    letter-spacing: 4px;
+  }
+  
+  
+  .crt-bottom-bezel::before,
+  .crt-bottom-bezel::after {
+    display: none;
+  }
+  
+  .crt-stand {
+    width: 100px;
+    height: 8px;
+    border-radius: 0 0 6px 6px;
+  }
+}

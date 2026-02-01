@@ -1,36 +1,74 @@
-body, html {
+/* Global Styles */
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
   height: 100%;
   width: 100%;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
-#root {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+body {
+  font-family: 'Times New Roman', serif;
+  background: #1a1a1a;
+  color: #e0e0e0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.cursor-gradient {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-}
-.blinking-cursor {
-  display: inline-block;
-  width: 4px; /* Thickness of the cursor */
-  height: 1em; /* Matches the height of the text */
-  background-color: #e9d5ff; /* Cursor color */
-  margin-left: 2px; /* Space between text and cursor */
-  animation: blink 0.7s step-end infinite;
+/* Selection color */
+::selection {
+  background: #0166FF;
+  color: #fff;
 }
 
-@keyframes blink {
-  50% {
-    opacity: 0;
-  }
+/* Scrollbar styles */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255,255,255,0.05);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.2);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255,255,255,0.3);
+}
+
+/* Focus styles */
+*:focus {
+  outline: none;
+}
+
+/* Link base styles */
+a {
+  color: #0166FF;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: #3388FF;
+}
+
+/* Button reset */
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+/* Prevent text selection on UI elements */
+.no-select {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
