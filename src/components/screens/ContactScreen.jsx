@@ -143,13 +143,11 @@ const BackButton = styled.button`
 
 const Content = styled.div`
   flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  padding: clamp(15px, 3vh, 30px);
+  display: block;
+  padding: clamp(25px, 5vh, 50px) clamp(15px, 3vw, 30px);
   min-height: 0;
   overflow-y: auto;
+  text-align: center;
   
   &::-webkit-scrollbar {
     width: 8px;
@@ -163,18 +161,13 @@ const Content = styled.div`
     background: #0166FF;
     border-radius: 0;
   }
-  
-  @media (min-height: 550px) {
-    justify-content: center;
-  }
 `;
 
 const ContactCard = styled.div`
+  display: inline-block;
   text-align: center;
   max-width: 600px;
   width: 100%;
-  flex-shrink: 0;
-  padding: 10px 0;
   
   @media (min-width: 1600px) {
     max-width: 700px;
