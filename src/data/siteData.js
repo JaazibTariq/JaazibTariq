@@ -31,8 +31,16 @@ export const experiences = [
   {
     id: 1,
     company: "Super.com",
-    role: "Software Engineering Intern",
-    dateRange: "Mar 2025 – Present",
+    role: "Software Engineering Intern - Core Earnings Team",
+    dateRange: "Jan 2026 – Present",
+    url: "https://www.super.com",
+    description: null, // Add description if needed
+  },
+  {
+    id: 2,
+    company: "Super.com",
+    role: "Software Engineering Intern - Travel Team",
+    dateRange: "May 2025 – Sep 2025",
     url: "https://www.super.com",
     description: null, // Add description if needed
   },
