@@ -39,7 +39,7 @@ export const experiences = [
   {
     id: 2,
     company: "SellStatic",
-    role: "Senior Software Engineer",
+    role: "Software Engineer",
     dateRange: "Jun 2024 – Present",
     url: "https://www.sellstatic.com",
     description: null,
