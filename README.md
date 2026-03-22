@@ -1,7 +1,7 @@
 <h1 align="center">Hi 👋, I'm Jaazib</h1>
 <h3 align="center">Computer Engineering Student @ The University of Waterloo</h3>
 
-- 🔭 I’m currently working on **[SellStatic](https://www.sellstatic.com/)* - An AI Marketing platform**
+- 🔭 I’m currently working on **[SellStatic](https://www.sellstatic.com/)* - An AI Marketing platform*
 
 - 🌱 I’m currently learning **Machine Learning and Web3**
 
