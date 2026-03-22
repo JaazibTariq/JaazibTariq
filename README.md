@@ -1,13 +1,11 @@
 <h1 align="center">Hi 👋, I'm Jaazib</h1>
 <h3 align="center">Computer Engineering Student @ The University of Waterloo</h3>
 
-- 🔭 I’m currently working on **CodeClashers - A platform where users can compete against one another to solve Leetcode style questions**
+- 🔭 I’m currently working on **[SellStatic](https://www.sellstatic.com/)* - An AI Marketing platform**
 
-- 🌱 I’m currently learning **Machine Learning, Web3, & Backend Development**
+- 🌱 I’m currently learning **Machine Learning and Web3**
 
 - 👨‍💻 All of my projects are available at [https://www.jaazibtariq.com/](https://www.jaazibtariq.com/)
-
-- 💬 Ask me about **ReactJs, NodeJs, Flask, OpenAI, NextJs**
 
 - 📫 How to reach me **jtariq@uwaterloo.ca**
 
