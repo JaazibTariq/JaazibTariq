@@ -30,14 +30,22 @@ export const personalInfo = {
 export const experiences = [
   {
     id: 1,
+    company: "8090",
+    role: "Member of Technical Staff",
+    dateRange: "Sep 2026 – Present",
+    url: "https://www.8090.ai",
+    description: null,
+  },
+  {
+    id: 2,
     company: "Super.com",
     role: "Software Engineering Intern - Core Earnings Team",
-    dateRange: "Jan 2026 – Present",
+    dateRange: "Jan 2026 – Apr 2026",
     url: "https://www.super.com",
     description: null, // Add description if needed
   },
   {
-    id: 2,
+    id: 3,
     company: "Super.com",
     role: "Software Engineering Intern - Travel Team",
     dateRange: "May 2025 – Sep 2025",
@@ -45,15 +53,15 @@ export const experiences = [
     description: null, // Add description if needed
   },
   {
-    id: 2,
+    id: 4,
     company: "SellStatic",
     role: "Software Engineer",
-    dateRange: "Jun 2024 – Present",
+    dateRange: "Jun 2024 – Sep 2026",
     url: "https://www.sellstatic.com",
     description: null,
   },
   {
-    id: 3,
+    id: 5,
     company: "MAX – Muslims Achieving Excellence",
     role: "Frontend Engineering Intern",
     dateRange: "Aug 2024 – Dec 2024",
